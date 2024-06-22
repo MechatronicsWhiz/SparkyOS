@@ -1,54 +1,38 @@
 #!/bin/bash
 
-################ Phase 1: Update and install LXQt, GVFS ################
-sudo apt update
-sudo apt upgrade -y
-sudo apt --no-install-recommends install -y lxqt-core gvfs 
+set -e  # Exit immediately if a command exits with a non-zero status
 
-# Check if the above commands succeeded
-if [ $? -ne 0 ]; then
-    echo "Phase 1 failed. Exiting script."
-    exit 1
-fi
+################ Phase 1: Update and install LXQt, GVFS ################
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 
 ################ Phase 2: Install desktop environment ################
-sudo apt install -y openbox lightdm 
-
-# Check if the above command succeeded
-if [ $? -ne 0 ]; then
-    echo "Phase 2 failed. Exiting script."
-    exit 1
-fi
+sudo apt-get install -y openbox lightdm
 
 ################ Phase 3: Install additional packages and configure autologin ################
-sudo apt install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine -y
+sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 sudo raspi-config nonint do_boot_behaviour B4
 
-# Check if the above commands succeeded
-if [ $? -ne 0 ]; then
-    echo "Phase 3 failed. Exiting script."
-    exit 1
-fi
-
 # Fix GPIO pin problems for Raspberry Pi 5
-sudo rpi-update -y 
-sudo apt remove python3-rpi.gpio -y 
-pip3 install rpi-lgpio --break-system-packages 
-sudo pip3 install --upgrade RPi.GPIO --break-system-packages 
+sudo rpi-update -y
+sudo apt-get remove python3-rpi.gpio -y
+sudo pip3 install rpi-lgpio --no-cache-dir --force-reinstall
+sudo pip3 install --upgrade RPi.GPIO --no-cache-dir --force-reinstall
 
 # Install additional Python packages
-sudo pip install SMBus rpi-ws281x --break-system-packages 
-sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig 
-sudo apt-get install python3-pil python3-pil.imagetk 
-sudo pip install Pillow --break-system-packages 
+sudo pip install SMBus rpi-ws281x
+sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig
+sudo apt-get install -y python3-pil python3-pil.imagetk
+sudo pip install Pillow
 
 # Install Apache and Python libraries for computer vision
-sudo apt install -y python3-opencv python3-numpy
+sudo apt-get install -y python3-opencv python3-numpy
 
 # Install Python machine learning packages
-sudo apt install -y python3-scipy python3-matplotlib python3-joblib
-pip install scikit-learn --break-system-packages
-python3 -m pip install mediapipe --break-system-packages
+sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
+sudo pip install scikit-learn
+python3 -m pip install mediapipe
 
 ################ Phase 4: Configure the desktop for LXQt ################
 
@@ -65,30 +49,29 @@ declare -a files=(
 # GitHub repository URL
 github_repo="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration/"
 
-# Iterate through each file in the array
-for entry in "${files[@]}"
-do
-    # Split each entry by colon
-    IFS=':' read -ra file <<< "$entry"
-    filename="${file[0]}"
-    local_path="${file[1]}"
+# Function to download files
+download_file() {
+    local filename=$1
+    local local_path=$2
+    local github_url="${github_repo}${filename}"
 
-    # Construct GitHub URL
-    github_url="${github_repo}${filename}"
-
-    # Download the file from GitHub
-    echo "Downloading ${filename}..."
     wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
-
-    # Check if download was successful
     if [ $? -eq 0 ]; then
         echo "Successfully downloaded ${filename} to ${local_path}"
     else
         echo "Failed to download ${filename}"
+        exit 1
     fi
+}
+
+# Download each file from GitHub
+for entry in "${files[@]}"; do
+    IFS=':' read -ra file <<< "$entry"
+    download_file "${file[0]}" "${file[1]}"
 done
 
 echo "All files downloaded and replaced."
 
-################ reboot ################
+################ Reboot ################
+echo "System update and setup completed successfully. Rebooting..."
 sudo reboot
