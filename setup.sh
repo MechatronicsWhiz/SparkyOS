@@ -5,19 +5,26 @@ set -e  # Exit immediately if a command exits with a non-zero status
 # Set noninteractive mode for apt-get
 export DEBIAN_FRONTEND=noninteractive
 
+# Ensure pip is installed
+if ! command -v pip &> /dev/null; then
+    sudo apt-get install -y python3-pip
+fi
+
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get --no-install-recommends install lxqt-core gvfs
-echo "#############"
-echo "Phase 1 done"
-echo "#############"
+sudo apt-get --no-install-recommends install -y lxqt-core gvfs
+echo "#######################################"
+echo "############# Phase 1 done#############"
+echo "#######################################"
+sleep 2
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get install -y openbox lightdm
-echo "#############"
-echo "Phase 2 done"
-echo "#############"
+echo "#######################################"
+echo "############# Phase 2 done#############"
+echo "#######################################"
+sleep 2
 
 ################ Phase 3: Configure the desktop for LXQt ################
 # Define an array of files to download and replace
@@ -67,9 +74,10 @@ for entry in "${files[@]}"; do
     download_file "${file[0]}" "${file[1]}"
 done
 
-echo "#############"
-echo "Phase 3 done"
-echo "#############"
+echo "#######################################"
+echo "############# Phase 3 done#############"
+echo "#######################################"
+sleep 2
 
 
 ################ Phase 4: Install additional packages and configure autologin ################
@@ -77,7 +85,7 @@ sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwe
 sudo raspi-config nonint do_boot_behaviour B4
 
 # Install additional Python packages
-pip install SMBus rpi-ws281x
+sudo -H pip install SMBus rpi-ws281x
 sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig
 
 # Install Python libraries for computer vision
@@ -85,12 +93,13 @@ sudo apt-get install -y python3-opencv python3-numpy
 
 # Install Python machine learning packages
 sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
-pip install scikit-learn
+sudo -H pip install scikit-learn
 sudo python3 -m pip install mediapipe
 
-echo "#############"
-echo "Phase 4 done"
-echo "#############"
+echo "#######################################"
+echo "############# Phase 4 done#############"
+echo "#######################################"
+sleep 2
 
 ################ Reboot ################
 echo "System update and setup completed successfully. Rebooting..."
