@@ -9,9 +9,11 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 sudo apt-get upgrade 
 sudo apt-get --no-install-recommends install lxqt-core gvfs
+echo "Phase 1 done"
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get install openbox lightdm
+echo "Phase 2 done"
 
 ################ Phase 3: Install additional packages and configure autologin ################
 sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
@@ -28,6 +30,7 @@ sudo apt-get install python3-opencv python3-numpy
 sudo apt-get install python3-scipy python3-matplotlib python3-joblib
 sudo pip install scikit-learn
 sudo python3 -m pip install mediapipe
+echo "Phase 3 done"
 
 ################ Phase 4: Configure the desktop for LXQt ################
 
@@ -65,7 +68,7 @@ for entry in "${files[@]}"; do
     download_file "${file[0]}" "${file[1]}"
 done
 
-echo "All files downloaded and replaced."
+echo "Phase 4 done"
 
 ################ Reboot ################
 echo "System update and setup completed successfully. Rebooting..."
