@@ -17,25 +17,17 @@ sudo apt-get install openbox lightdm
 sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 sudo raspi-config nonint do_boot_behaviour B4
 
-# Fix GPIO pin problems for Raspberry Pi 5
-sudo rpi-update -y
-sudo apt-get remove python3-rpi.gpio 
-sudo pip3 install rpi-lgpio --no-cache-dir --force-reinstall
-sudo pip3 install --upgrade RPi.GPIO --no-cache-dir --force-reinstall
-
 # Install additional Python packages
 sudo pip install SMBus rpi-ws281x
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig
-sudo apt-get install python3-pil python3-pil.imagetk
-sudo pip install Pillow
 
-# Install Apache and Python libraries for computer vision
+# Install Python libraries for computer vision
 sudo apt-get install python3-opencv python3-numpy
 
 # Install Python machine learning packages
 sudo apt-get install python3-scipy python3-matplotlib python3-joblib
-pip install scikit-learn
-python3 -m pip install mediapipe
+sudo pip install scikit-learn
+sudo python3 -m pip install mediapipe
 
 ################ Phase 4: Configure the desktop for LXQt ################
 
