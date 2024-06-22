@@ -3,7 +3,7 @@
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt update
 sudo apt upgrade -y
-sudo apt --no-install-recommends install lxqt-core gvfs -y
+sudo apt --no-install-recommends install -y lxqt-core gvfs 
 
 # Check if the above commands succeeded
 if [ $? -ne 0 ]; then
@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
 fi
 
 ################ Phase 2: Install desktop environment ################
-sudo apt install openbox lightdm -y
+sudo apt install -y openbox lightdm 
 
 # Check if the above command succeeded
 if [ $? -ne 0 ]; then
@@ -31,17 +31,18 @@ if [ $? -ne 0 ]; then
 fi
 
 # Fix GPIO pin problems for Raspberry Pi 5
-sudo rpi-update -y
-sudo apt remove python3-rpi.gpio -y
-sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages
+sudo rpi-update -y 
+sudo apt remove python3-rpi.gpio -y 
+pip3 install rpi-lgpio --break-system-packages 
+sudo pip3 install --upgrade RPi.GPIO --break-system-packages 
 
 # Install additional Python packages
-sudo pip install SMBus rpi-ws281x --break-system-packages
-sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y
+sudo pip install SMBus rpi-ws281x --break-system-packages 
+sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig 
+sudo apt-get install python3-pil python3-pil.imagetk 
+sudo pip install Pillow --break-system-packages 
 
 # Install Apache and Python libraries for computer vision
-sudo apt install -y apache2
-sudo service apache2 start
 sudo apt install -y python3-opencv python3-numpy
 
 # Install Python machine learning packages
@@ -49,8 +50,7 @@ sudo apt install -y python3-scipy python3-matplotlib python3-joblib
 pip install scikit-learn --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 
-################ Phase 4: Configure the desktop panel for LXQt ################
-#!/bin/bash
+################ Phase 4: Configure the desktop for LXQt ################
 
 # Define an array of files to download and replace
 declare -a files=(
