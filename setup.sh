@@ -50,60 +50,45 @@ pip install scikit-learn --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 
 ################ Phase 4: Configure the desktop panel for LXQt ################
-panel_conf="$HOME/.config/lxqt/panel.conf"
+#!/bin/bash
 
-# Ensure directory exists before writing panel configuration
-mkdir -p "$(dirname "$panel_conf")"
-
-# Define new panel settings
-new_settings=$(cat <<EOF
-[General]
-__userfile__=true
-iconTheme=
-
-[mainmenu]
-alignment=Left
-type=mainmenu
-
-[panel1]
-alignment=0
-animation-duration=0
-background-color=@Variant(\0\0\0\x43\x1\xff\xff\0\0UU\x7f\x7f\0\0)
-background-image=
-desktop=0
-font-color=@Variant(\0\0\0\x43\0\xff\xff\0\0\0\0\0\0\0)
-hidable=false
-hide-on-overlap=false
-iconSize=140
-lineCount=1
-lockPanel=false
-opacity=58
-panelSize=120
-plugins=mainmenu,quicklaunch
-position=Left
-reserve-space=true
-show-delay=0
-visible-margin=true
-width=100
-width-percent=true
-
-[plugin-0]
-alignment=left
-type=menu
-
-[plugin-1]
-alignment=left
-type=quicklaunch
-
-[quicklaunch]
-alignment=Left
-type=quicklaunch
-EOF
+# Define an array of files to download and replace
+declare -a files=(
+    "rc.xml:$HOME/.config/openbox/rc.xml"
+    "lxqt.conf:$HOME/.config/lxqt/lxqt.conf"
+    "lxqt-config-locale.conf:$HOME/.config/lxqt/lxqt-config-locale.conf"
+    "panel.conf:$HOME/.config/lxqt/panel.conf"
+    "session.conf:$HOME/.config/lxqt/session.conf"
+    "settings.conf:$HOME/.config/pcmanfm-qt/lxqt/settings.conf"
 )
 
-# Apply panel configuration
-echo "$new_settings" > "$panel_conf"
-echo "Panel configuration done"
+# GitHub repository URL
+github_repo="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration/"
+
+# Iterate through each file in the array
+for entry in "${files[@]}"
+do
+    # Split each entry by colon
+    IFS=':' read -ra file <<< "$entry"
+    filename="${file[0]}"
+    local_path="${file[1]}"
+
+    # Construct GitHub URL
+    github_url="${github_repo}${filename}"
+
+    # Download the file from GitHub
+    echo "Downloading ${filename}..."
+    wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
+
+    # Check if download was successful
+    if [ $? -eq 0 ]; then
+        echo "Successfully downloaded ${filename} to ${local_path}"
+    else
+        echo "Failed to download ${filename}"
+    fi
+done
+
+echo "All files downloaded and replaced."
 
 ################ reboot ################
 sudo reboot
