@@ -1,6 +1,6 @@
 #!/bin/bash
 
-################ Phase 1: Update package lists and install LXQt, GVFS ################
+################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt update
 sudo apt upgrade -y
 sudo apt --no-install-recommends install lxqt-core gvfs -y
@@ -11,7 +11,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-################ Phase 2: Install Openbox and LightDM ################
+################ Phase 2: Install desktop environment ################
 sudo apt install openbox lightdm -y
 
 # Check if the above command succeeded
@@ -36,7 +36,7 @@ sudo apt remove python3-rpi.gpio -y
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages
 
 # Install additional Python packages
-sudo pip install Pillow SMBus rpi-ws281x --break-system-packages
+sudo pip install SMBus rpi-ws281x --break-system-packages
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y
 
 # Install Apache and Python libraries for computer vision
