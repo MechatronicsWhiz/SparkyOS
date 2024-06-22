@@ -77,7 +77,7 @@ sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwe
 sudo raspi-config nonint do_boot_behaviour B4
 
 # Install additional Python packages
-sudo pip install -y SMBus rpi-ws281x
+pip install SMBus rpi-ws281x
 sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig
 
 # Install Python libraries for computer vision
@@ -85,7 +85,7 @@ sudo apt-get install -y python3-opencv python3-numpy
 
 # Install Python machine learning packages
 sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
-sudo pip install scikit-learn
+pip install scikit-learn
 sudo python3 -m pip install mediapipe
 
 echo "#############"
