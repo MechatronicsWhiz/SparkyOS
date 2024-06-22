@@ -1,2 +1,3 @@
-# sparkyos
-saprky operating system
+# SparkyOS
+Sparky Operating System
+
