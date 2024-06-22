@@ -1,6 +1,6 @@
-rc.xml                         /home/sparky/.config/openbox 
-lxqt.conf                      /home/sparky/.config/lxqt
-lxqt-config-locale.conf        /home/sparky/.config/lxqt
-panel.conf                     /home/sparky/.config/lxqt
-session.conf				   /home/sparky/.config/lxqt
-settings.conf                  /home/sparky/.config/pcmanfm-qt/lxqt
+rc.xml                         $HOME/.config/openbox 
+lxqt.conf                      $HOME/.config/lxqt
+lxqt-config-locale.conf        $HOME/.config/lxqt
+panel.conf                     $HOME/.config/lxqt
+session.conf				           $HOME/.config/lxqt
+settings.conf                  $HOME/.config/pcmanfm-qt/lxqt
