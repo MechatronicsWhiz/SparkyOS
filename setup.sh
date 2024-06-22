@@ -2,6 +2,9 @@
 
 set -e  # Exit immediately if a command exits with a non-zero status
 
+# Set noninteractive mode for apt-get
+export DEBIAN_FRONTEND=noninteractive
+
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -31,7 +34,7 @@ sudo apt-get install -y python3-opencv python3-numpy
 
 # Install Python machine learning packages
 sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
-sudo pip install scikit-learn
+pip install scikit-learn
 python3 -m pip install mediapipe
 
 ################ Phase 4: Configure the desktop for LXQt ################
