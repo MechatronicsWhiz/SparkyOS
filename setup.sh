@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Phase 1: Update package lists and install LXQt, GVFS
+################ Phase 1: Update package lists and install LXQt, GVFS ################
 sudo apt update
 sudo apt upgrade -y
 sudo apt --no-install-recommends install lxqt-core gvfs -y
@@ -11,7 +11,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Phase 2: Install Openbox and LightDM
+################ Phase 2: Install Openbox and LightDM ################
 sudo apt install openbox lightdm -y
 
 # Check if the above command succeeded
@@ -20,7 +20,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Phase 3: Install additional packages and configure autologin
+################ Phase 3: Install additional packages and configure autologin ################
 sudo apt install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine -y
 sudo raspi-config nonint do_boot_behaviour B4
 
@@ -49,7 +49,7 @@ sudo apt install -y python3-scipy python3-matplotlib python3-joblib
 pip install scikit-learn --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 
-# Phase 4: Configure the desktop panel for LXQt
+################ Phase 4: Configure the desktop panel for LXQt ################
 panel_conf="$HOME/.config/lxqt/panel.conf"
 
 # Ensure directory exists before writing panel configuration
@@ -105,3 +105,5 @@ EOF
 echo "$new_settings" > "$panel_conf"
 echo "Panel configuration done"
 
+################ reboot ################
+sudo reboot
