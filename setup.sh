@@ -20,7 +20,6 @@ echo "Phase 2 done"
 echo "#############"
 
 ################ Phase 3: Configure the desktop for LXQt ################
-
 # Define an array of files to download and replace
 declare -a files=(
     "rc.xml:$HOME/.config/openbox/rc.xml"
@@ -39,7 +38,20 @@ download_file() {
     local filename=$1
     local local_path=$2
     local github_url="${github_repo}${filename}"
+    local dir_path=$(dirname "${local_path}")
 
+    # Create directory if it doesn't exist
+    if [ ! -d "${dir_path}" ]; then
+        mkdir -p "${dir_path}"
+        if [ $? -eq 0 ]; then
+            echo "Created directory ${dir_path}"
+        else
+            echo "Failed to create directory ${dir_path}"
+            exit 1
+        fi
+    fi
+
+    # Download the file
     wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
     if [ $? -eq 0 ]; then
         echo "Successfully downloaded ${filename} to ${local_path}"
@@ -54,9 +66,11 @@ for entry in "${files[@]}"; do
     IFS=':' read -ra file <<< "$entry"
     download_file "${file[0]}" "${file[1]}"
 done
+
 echo "#############"
 echo "Phase 3 done"
 echo "#############"
+
 
 ################ Phase 4: Install additional packages and configure autologin ################
 sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
