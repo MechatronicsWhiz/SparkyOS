@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Update package lists
+sudo apt update
+sudo apt upgrade -y
+
+# Install LXQt, GVFS, Openbox, LightDM (without recommended packages)
+sudo apt --no-install-recommends install lxqt-core gvfs openbox lightdm -y
+
+# Install additional packages
+sudo apt install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine -y
+
+# Configure autologin for the 'pi' user
+sudo raspi-config nonint do_boot_behaviour B4
+
+
+# Configure lightdm autologin for the 'pi' user
+# sudo tee -a /etc/lightdm/lightdm.conf > /dev/null <<EOT
+# [SeatDefaults]
+# autologin-user=pi
+# autologin-user-timeout=0
+# EOT
+
+# Reboot to apply final changes
+sudo reboot
