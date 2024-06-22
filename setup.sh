@@ -1,10 +1,5 @@
 #!/bin/bash
 
-set -e  # Exit immediately if a command exits with a non-zero status
-
-# Set noninteractive mode for apt-get
-export DEBIAN_FRONTEND=noninteractive
-
 # Ensure pip is installed
 if ! command -v pip &> /dev/null; then
     sudo apt-get install -y python3-pip
@@ -81,20 +76,16 @@ sleep 2
 
 
 ################ Phase 4: Install additional packages and configure autologin ################
-sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
-sudo raspi-config nonint do_boot_behaviour B4
+sudo rpi-update -y 
+sudo apt remove python3-rpi.gpio -y 
+sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
 
-# Install additional Python packages
-sudo -H pip install SMBus rpi-ws281x
-sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig
-
-# Install Python libraries for computer vision
-sudo apt-get install -y python3-opencv python3-numpy
-
-# Install Python machine learning packages
-sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
-sudo -H pip install scikit-learn
-sudo python3 -m pip install mediapipe
+sudo pip install Pillow SMBus rpi-ws281x --break-system-packages 
+sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
+sudo apt install -y python3-opencv python3-numpy
+sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
+pip install scikit-learn --break-system-packages 
+python3 -m pip install mediapipe --break-system-packages
 
 echo "#######################################"
 echo "############# Phase 4 done#############"
