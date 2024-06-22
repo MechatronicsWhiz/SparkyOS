@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Ensure pip is installed
+# Ensure pip is installed and up-to-date
 if ! command -v pip &> /dev/null; then
     sudo apt-get install -y python3-pip
+    python3 -m pip install --upgrade pip
 fi
 
 ################ Phase 1: Update and install LXQt, GVFS ################
