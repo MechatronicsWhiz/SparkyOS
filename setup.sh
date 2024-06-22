@@ -68,4 +68,5 @@ EOF
 echo "$new_settings" > "$panel_conf"
 echo "Panel configuration done"
 
+sudo reboot
 
