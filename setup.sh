@@ -5,7 +5,7 @@ reboot_system() {
     phase=$1
     echo $phase > /tmp/script_phase
     echo "System will reboot now to continue with phase $phase."
-    sudo reboot now
+    sudo reboot
 }
 
 # Read the current phase
@@ -36,13 +36,13 @@ case $phase in
         
     "addingPackages")
         # Phase 3: Install additional packages and configure autologin
-        sudo apt install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine -y
+        sudo apt install chromium thonny python3-pyqt5 python3-pyqt5.qtwebengine -y
         sudo raspi-config nonint do_boot_behaviour B4
         
         # Cleanup and final reboot
         rm /tmp/script_phase
         echo "Setup is complete. The system will reboot one last time."
-        sudo reboot now
+        sudo reboot
         ;;
         
     *)
