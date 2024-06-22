@@ -18,7 +18,7 @@ sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtweben
 sudo raspi-config nonint do_boot_behaviour B4
 
 # Fix GPIO pin problems for Raspberry Pi 5
-sudo rpi-update 
+sudo rpi-update -y
 sudo apt-get remove python3-rpi.gpio 
 sudo pip3 install rpi-lgpio --no-cache-dir --force-reinstall
 sudo pip3 install --upgrade RPi.GPIO --no-cache-dir --force-reinstall
