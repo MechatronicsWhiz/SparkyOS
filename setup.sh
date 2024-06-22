@@ -7,33 +7,33 @@ export DEBIAN_FRONTEND=noninteractive
 
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get --no-install-recommends install -y lxqt-core gvfs
+sudo apt-get upgrade 
+sudo apt-get --no-install-recommends install lxqt-core gvfs
 
 ################ Phase 2: Install desktop environment ################
-sudo apt-get install -y openbox lightdm
+sudo apt-get install openbox lightdm
 
 ################ Phase 3: Install additional packages and configure autologin ################
-sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
+sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 sudo raspi-config nonint do_boot_behaviour B4
 
 # Fix GPIO pin problems for Raspberry Pi 5
-sudo rpi-update -y
-sudo apt-get remove python3-rpi.gpio -y
+sudo rpi-update 
+sudo apt-get remove python3-rpi.gpio 
 sudo pip3 install rpi-lgpio --no-cache-dir --force-reinstall
 sudo pip3 install --upgrade RPi.GPIO --no-cache-dir --force-reinstall
 
 # Install additional Python packages
 sudo pip install SMBus rpi-ws281x
-sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig
-sudo apt-get install -y python3-pil python3-pil.imagetk
+sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig
+sudo apt-get install python3-pil python3-pil.imagetk
 sudo pip install Pillow
 
 # Install Apache and Python libraries for computer vision
-sudo apt-get install -y python3-opencv python3-numpy
+sudo apt-get install python3-opencv python3-numpy
 
 # Install Python machine learning packages
-sudo apt-get install -y python3-scipy python3-matplotlib python3-joblib
+sudo apt-get install python3-scipy python3-matplotlib python3-joblib
 pip install scikit-learn
 python3 -m pip install mediapipe
 
