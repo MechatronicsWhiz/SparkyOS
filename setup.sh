@@ -9,30 +9,17 @@ export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
 sudo apt-get upgrade 
 sudo apt-get --no-install-recommends install lxqt-core gvfs
+echo "#############"
 echo "Phase 1 done"
+echo "#############"
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get install openbox lightdm
+echo "#############"
 echo "Phase 2 done"
+echo "#############"
 
-################ Phase 3: Install additional packages and configure autologin ################
-sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
-sudo raspi-config nonint do_boot_behaviour B4
-
-# Install additional Python packages
-sudo pip install SMBus rpi-ws281x
-sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig
-
-# Install Python libraries for computer vision
-sudo apt-get install python3-opencv python3-numpy
-
-# Install Python machine learning packages
-sudo apt-get install python3-scipy python3-matplotlib python3-joblib
-sudo pip install scikit-learn
-sudo python3 -m pip install mediapipe
-echo "Phase 3 done"
-
-################ Phase 4: Configure the desktop for LXQt ################
+################ Phase 3: Configure the desktop for LXQt ################
 
 # Define an array of files to download and replace
 declare -a files=(
@@ -67,8 +54,29 @@ for entry in "${files[@]}"; do
     IFS=':' read -ra file <<< "$entry"
     download_file "${file[0]}" "${file[1]}"
 done
+echo "#############"
+echo "Phase 3 done"
+echo "#############"
 
+################ Phase 4: Install additional packages and configure autologin ################
+sudo apt-get install chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
+sudo raspi-config nonint do_boot_behaviour B4
+
+# Install additional Python packages
+sudo pip install SMBus rpi-ws281x
+sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig
+
+# Install Python libraries for computer vision
+sudo apt-get install python3-opencv python3-numpy
+
+# Install Python machine learning packages
+sudo apt-get install python3-scipy python3-matplotlib python3-joblib
+sudo pip install scikit-learn
+sudo python3 -m pip install mediapipe
+
+echo "#############"
 echo "Phase 4 done"
+echo "#############"
 
 ################ Reboot ################
 echo "System update and setup completed successfully. Rebooting..."
