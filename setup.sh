@@ -9,6 +9,7 @@ sleep 2
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 sudo apt-get install -y openbox lightdm
+sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
 
 echo "##################################################################"
 echo "########################## Phase 2 done ##########################"
@@ -98,8 +99,6 @@ echo "########################## Phase 4 done ##########################"
 sleep 2
 
 ################ Reboot ################
-# Set lightdm to use autologin
-sudo raspi-config nonint do_boot_behaviour B4
 
 echo "System update and setup completed successfully. Rebooting..."
 sudo reboot
