@@ -33,7 +33,7 @@ pip install scikit-learn --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 
 echo "##################################################################"
-echo "########################## Phase 4 done ##########################"
+echo "########################## Phase 3 done ##########################"
 sleep 2
 
 ################ Phase 3: Configure the desktop for LXQt ################
