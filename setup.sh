@@ -9,9 +9,8 @@ fi
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
-echo "#######################################"
-echo "############# Phase 1 done#############"
-echo "#######################################"
+echo "##################################################################"
+echo "########################## Phase 1 done ##########################"
 sleep 2
 
 ################ Phase 2: Install desktop environment ################
@@ -23,9 +22,8 @@ sudo raspi-config nonint do_boot_behaviour B4
 sudo sed -i 's/^#autologin-user=.*/autologin-user=pi/' /etc/lightdm/lightdm.conf
 sudo systemctl enable lightdm.service
 
-echo "#######################################"
-echo "############# Phase 2 done#############"
-echo "#######################################"
+echo "##################################################################"
+echo "########################## Phase 2 done ##########################"
 sleep 2
 
 ################ Phase 3: Configure the desktop for LXQt ################
@@ -90,10 +88,8 @@ sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com
 sudo wget -O $GRAPH_DIR/$"sparky_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/sparky_icon.png"
 sudo wget -O $GRAPH_DIR/$"hardware_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/hardware_icon.png"
 
-
-echo "#######################################"
-echo "############# Phase 3 done#############"
-echo "#######################################"
+echo "##################################################################"
+echo "########################## Phase 3 done ##########################"
 sleep 2
 
 
@@ -114,9 +110,8 @@ pip install scikit-learn --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 '
 
-echo "#######################################"
-echo "############# Phase 4 done#############"
-echo "#######################################"
+echo "##################################################################"
+echo "########################## Phase 4 done ##########################"
 sleep 2
 
 ################ Reboot ################
