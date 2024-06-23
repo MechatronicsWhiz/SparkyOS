@@ -89,8 +89,8 @@ sudo rm -f $WALLPAPER_DIR/*
 sudo rm -f $GRAPH_DIR/*
 
 # Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.jpg"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.svg"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
 
 echo "##################################################################"
