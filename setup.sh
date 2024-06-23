@@ -70,9 +70,14 @@ for entry in "${files[@]}"; do
     download_file "${file[0]}" "${file[1]}"
 done
 
+# Download images
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 sudo rm -f $WALLPAPER_DIR/*
-sudo wget -O $WALLPAPER_DIR/$IMAGE_NAME $IMAGE_URL
+
+# Download the new image from GitHub
+sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://github.com/MechatronicsWhiz/sparkyos/raw/main/resources/wallpaper5.png"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper4.png" $"https://github.com/MechatronicsWhiz/sparkyos/raw/main/resources/wallpaper4.png"
+
 
 echo "#######################################"
 echo "############# Phase 3 done#############"
