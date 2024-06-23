@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set noninteractive mode for apt-get
-export DEBIAN_FRONTEND=noninteractive
-
 # Ensure pip is installed and up-to-date
 if ! command -v pip &> /dev/null; then
     sudo apt-get install -y python3-pip
@@ -100,7 +97,6 @@ sleep 2
 sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 sudo raspi-config nonint do_boot_behaviour B4
 
-:'
 sudo rpi-update -y 
 sudo apt remove python3-rpi.gpio -y 
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
@@ -111,7 +107,6 @@ sudo apt install -y python3-opencv python3-numpy
 sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
 pip install scikit-learn --break-system-packages 
 python3 -m pip install mediapipe --break-system-packages
-'
 
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
