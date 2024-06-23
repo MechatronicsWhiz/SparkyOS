@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set noninteractive mode for apt-get
+export DEBIAN_FRONTEND=noninteractive
+
 # Ensure pip is installed and up-to-date
 if ! command -v pip &> /dev/null; then
     sudo apt-get install -y python3-pip
@@ -50,7 +53,7 @@ download_file() {
 
     # Create directory if it doesn't exist
     if [ ! -d "${dir_path}" ]; then
-        mkdir -p "${dir_path}"
+        sudo mkdir -p "${dir_path}"
         if [ $? -eq 0 ]; then
             echo "Created directory ${dir_path}"
         else
@@ -60,7 +63,7 @@ download_file() {
     fi
 
     # Download the file
-    wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
+    sudo wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
     if [ $? -eq 0 ]; then
         echo "Successfully downloaded ${filename} to ${local_path}"
     else
@@ -97,7 +100,7 @@ sleep 2
 sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 sudo raspi-config nonint do_boot_behaviour B4
 
-.'
+:'
 sudo rpi-update -y 
 sudo apt remove python3-rpi.gpio -y 
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
