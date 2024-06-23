@@ -36,7 +36,7 @@ echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
 sleep 2
 
-################ Phase 3: Configure the desktop for LXQt ################
+################ Phase 4: Configure the desktop for LXQt ################
 # Define an array of files to download and replace
 declare -a files=(
     "rc.xml:$HOME/.config/openbox/rc.xml"
