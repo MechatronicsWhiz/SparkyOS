@@ -100,5 +100,6 @@ sleep 2
 ################ Reboot ################
 # Set lightdm to use autologin
 sudo raspi-config nonint do_boot_behaviour B4
+
 echo "System update and setup completed successfully. Rebooting..."
 sudo reboot
