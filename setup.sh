@@ -12,11 +12,13 @@ sudo apt-get install -y openbox lightdm
 sudo systemctl restart lightdm
 
 # Set lightdm to use autologin
-# sudo raspi-config nonint do_boot_behaviour B4
+sudo raspi-config nonint do_boot_behaviour B4
 
 echo "##################################################################"
 echo "########################## Phase 2 done ##########################"
 sleep 2
+
+<<'COMMENT'
 
 ################ Phase 3: Configure the desktop for LXQt ################
 # Define an array of files to download and replace
@@ -83,13 +85,16 @@ echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
 sleep 2
 
+COMMENT
 
 ################ Phase 4: Install additional packages and configure autologin ################
+sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
+
+<<'COMMENT'
+
 sudo rpi-update -y 
 sudo apt remove python3-rpi.gpio -y 
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
-
-sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
 
 sudo pip install SMBus rpi-ws281x --break-system-packages 
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
@@ -101,6 +106,8 @@ python3 -m pip install mediapipe --break-system-packages
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
 sleep 2
+
+COMMENT
 
 ################ Reboot ################
 echo "System update and setup completed successfully. Rebooting..."
