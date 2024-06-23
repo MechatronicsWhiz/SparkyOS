@@ -1,7 +1,4 @@
 #!/bin/bash
-
-set -e  # Exit immediately if a command exits with a non-zero status
-
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
