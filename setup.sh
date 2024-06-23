@@ -9,13 +9,13 @@ fi
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 echo "#######################################"
 echo "############# Phase 1 done#############"
 echo "#######################################"
 sleep 2
 
 ################ Phase 2: Install desktop environment ################
+sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 sudo apt-get install -y openbox lightdm
 echo "#######################################"
 echo "############# Phase 2 done#############"
