@@ -94,14 +94,14 @@ sleep 2
 
 
 ################ Phase 4: Install additional packages and configure autologin ################
-sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
-sudo raspi-config nonint do_boot_behaviour B4
-
 sudo rpi-update -y 
 sudo apt remove python3-rpi.gpio -y 
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
 
-sudo pip install Pillow SMBus rpi-ws281x --break-system-packages 
+sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
+sudo raspi-config nonint do_boot_behaviour B4
+
+sudo pip install SMBus rpi-ws281x --break-system-packages 
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
 sudo apt install -y python3-opencv python3-numpy
 sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
