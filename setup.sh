@@ -75,8 +75,8 @@ WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 sudo rm -f $WALLPAPER_DIR/*
 
 # Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://github.com/MechatronicsWhiz/sparkyos/raw/main/resources/wallpaper5.png"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper4.png" $"https://github.com/MechatronicsWhiz/sparkyos/raw/main/resources/wallpaper4.png"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper4.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper4.jpg"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper5.jpg"
 
 
 echo "#######################################"
