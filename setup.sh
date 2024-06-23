@@ -17,6 +17,12 @@ sleep 2
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 sudo apt-get install -y openbox lightdm
+
+# Set lightdm to use autologin
+sudo raspi-config nonint do_boot_behaviour B4
+sudo sed -i 's/^#autologin-user=.*/autologin-user=pi/' /etc/lightdm/lightdm.conf
+sudo systemctl enable lightdm.service
+
 echo "#######################################"
 echo "############# Phase 2 done#############"
 echo "#######################################"
@@ -72,11 +78,16 @@ done
 
 # Download images
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
+GRAPH_DIR="/usr/share/lxqt/graphics"
 sudo rm -f $WALLPAPER_DIR/*
+sudo rm -f $GRAPH_DIR/*
 
 # Download the new image from GitHub
 sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper4.jpg"
 sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper5.png"
+sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
+sudo wget -O $GRAPH_DIR/$"sparky_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/sparky_icon.png"
+sudo wget -O $GRAPH_DIR/$"hardware_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/hardware_icon.png"
 
 
 echo "#######################################"
