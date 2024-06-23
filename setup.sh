@@ -103,11 +103,11 @@ sudo apt install -y python3-scipy python3-matplotlib python3-joblib
 pip install scikit-learn --break-system-packages 
 python3 -m pip install mediapipe --break-system-packages
 
+COMMENT
+
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
 sleep 2
-
-COMMENT
 
 ################ Reboot ################
 echo "System update and setup completed successfully. Rebooting..."
