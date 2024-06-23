@@ -24,9 +24,10 @@ sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages
 sudo pip install SMBus rpi-ws281x --break-system-packages 
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
 sudo apt install -y python3-opencv python3-numpy
-sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
+sudo apt install -y python3-scipy python3-matplotlib python3-joblib python3-opencv
 pip install scikit-learn --break-system-packages 
 python3 -m pip install mediapipe --break-system-packages
+
 
 echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
@@ -88,10 +89,9 @@ sudo rm -f $WALLPAPER_DIR/*
 sudo rm -f $GRAPH_DIR/*
 
 # Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper4.jpg"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper5.png"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.jpg"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
-sudo wget -O $GRAPH_DIR/$"sparky_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/sparky_icon.png"
 
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
