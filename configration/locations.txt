@@ -4,3 +4,4 @@ lxqt-config-locale.conf        $HOME/.config/lxqt
 panel.conf                     $HOME/.config/lxqt
 session.conf				           $HOME/.config/lxqt
 settings.conf                  $HOME/.config/pcmanfm-qt/lxqt
+01_debian.conf                 /media/pi/rootfs/usr/share/lightdm/lightdm-gtk-greeter.conf.d
