@@ -42,6 +42,7 @@ echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
 sleep 2
 
+
 ################ Phase 4: Configure the desktop for LXQt ################
 # Define an array of files to download and replace
 declare -a files=(
@@ -105,6 +106,7 @@ sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
 sleep 2
+
 
 ################ Reboot ################
 # Enable the autologin service
