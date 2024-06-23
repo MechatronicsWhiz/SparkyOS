@@ -70,6 +70,10 @@ for entry in "${files[@]}"; do
     download_file "${file[0]}" "${file[1]}"
 done
 
+WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
+sudo rm -f $WALLPAPER_DIR/*
+sudo wget -O $WALLPAPER_DIR/$IMAGE_NAME $IMAGE_URL
+
 echo "#######################################"
 echo "############# Phase 3 done#############"
 echo "#######################################"
