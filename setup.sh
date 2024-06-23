@@ -18,7 +18,23 @@ echo "##################################################################"
 echo "########################## Phase 2 done ##########################"
 sleep 2
 
-<<'COMMENT'
+
+################ Phase 3: Install additional packages and configure autologin ################
+sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
+sudo rpi-update -y 
+sudo apt remove python3-rpi.gpio -y 
+sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
+
+sudo pip install SMBus rpi-ws281x --break-system-packages 
+sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
+sudo apt install -y python3-opencv python3-numpy
+sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
+pip install scikit-learn --break-system-packages 
+python3 -m pip install mediapipe --break-system-packages
+
+echo "##################################################################"
+echo "########################## Phase 4 done ##########################"
+sleep 2
 
 ################ Phase 3: Configure the desktop for LXQt ################
 # Define an array of files to download and replace
@@ -80,30 +96,6 @@ sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.co
 sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper5.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
 sudo wget -O $GRAPH_DIR/$"sparky_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/sparky_icon.png"
-
-echo "##################################################################"
-echo "########################## Phase 3 done ##########################"
-sleep 2
-
-COMMENT
-
-################ Phase 4: Install additional packages and configure autologin ################
-sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
-
-<<'COMMENT'
-
-sudo rpi-update -y 
-sudo apt remove python3-rpi.gpio -y 
-sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
-
-sudo pip install SMBus rpi-ws281x --break-system-packages 
-sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
-sudo apt install -y python3-opencv python3-numpy
-sudo apt install -y python3-scipy python3-matplotlib python3-joblib 
-pip install scikit-learn --break-system-packages 
-python3 -m pip install mediapipe --break-system-packages
-
-COMMENT
 
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
