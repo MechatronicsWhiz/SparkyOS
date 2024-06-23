@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Ensure pip is installed and up-to-date
-if ! command -v pip &> /dev/null; then
-    sudo apt-get install -y python3-pip
-    python3 -m pip install --upgrade pip
-fi
-
 ################ Phase 1: Update and install LXQt, GVFS ################
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -19,8 +13,6 @@ sudo apt-get install -y openbox lightdm
 
 # Set lightdm to use autologin
 sudo raspi-config nonint do_boot_behaviour B4
-sudo sed -i 's/^#autologin-user=.*/autologin-user=pi/' /etc/lightdm/lightdm.conf
-sudo systemctl enable lightdm.service
 
 echo "##################################################################"
 echo "########################## Phase 2 done ##########################"
@@ -39,13 +31,13 @@ declare -a files=(
 )
 
 # GitHub repository URL
-github_repo="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration/"
+CONFIG_DIR="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration/"
 
 # Function to download files
 download_file() {
     local filename=$1
     local local_path=$2
-    local github_url="${github_repo}${filename}"
+    local config_url="${CONFIG_DIR}${filename}"
     local dir_path=$(dirname "${local_path}")
 
     # Create directory if it doesn't exist
@@ -60,7 +52,7 @@ download_file() {
     fi
 
     # Download the file
-    sudo wget -q --show-progress --no-check-certificate -O "${local_path}" "${github_url}"
+    sudo wget -q --show-progress --no-check-certificate -O "${local_path}" "${config_url}"
     if [ $? -eq 0 ]; then
         echo "Successfully downloaded ${filename} to ${local_path}"
     else
@@ -86,7 +78,6 @@ sudo wget -O $WALLPAPER_DIR/$"wallpaper4.jpg" $"https://raw.githubusercontent.co
 sudo wget -O $WALLPAPER_DIR/$"wallpaper5.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper5.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
 sudo wget -O $GRAPH_DIR/$"sparky_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/sparky_icon.png"
-sudo wget -O $GRAPH_DIR/$"hardware_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/hardware_icon.png"
 
 echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
@@ -99,7 +90,6 @@ sudo apt remove python3-rpi.gpio -y
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages 
 
 sudo apt-get install -y chromium-browser thonny python3-pyqt5 python3-pyqt5.qtwebengine
-sudo raspi-config nonint do_boot_behaviour B4
 
 sudo pip install SMBus rpi-ws281x --break-system-packages 
 sudo apt-get install gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk -y 
