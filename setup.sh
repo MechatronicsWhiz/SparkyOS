@@ -99,6 +99,8 @@ echo "########################## Phase 4 done ##########################"
 sleep 2
 
 ################ Reboot ################
+# Enable the autologin service
+sudo systemctl enable lightdm.service
 
 echo "System update and setup completed successfully. Rebooting..."
 sudo reboot
