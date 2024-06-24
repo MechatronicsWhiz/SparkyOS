@@ -16,7 +16,6 @@ sleep 2
 
 
 ################ Phase 3: Configure the desktop for LXQt ################
-
 # Remove images
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 GRAPH_DIR="/usr/share/lxqt/graphics"
