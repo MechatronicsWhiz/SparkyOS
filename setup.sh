@@ -46,12 +46,14 @@ for local_path in "${!config_dir[@]}"; do
     remote_file="${config_dir[$local_path]}"
     remote_url="$config_url/$remote_file"
 
-    # Download the file
-    wget -O "$local_path" "$remote_url"
+    mkdir -p "$(dirname "$local_path")"     # Create the directory if it does not exist
+    wget -O "$local_path" "$remote_url"     # Download the file/replace the file
+
 done
 
-echo "Configuration files have been updated."
-
+echo "##################################################################"
+echo "########################## Phase 3 done ##########################"
+sleep 2
 
 ################ Phase 4: Install additional packages and configure autologin ################
 # Install Thonny
