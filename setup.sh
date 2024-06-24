@@ -48,7 +48,7 @@ sleep 2
 declare -a files=(
     "rc.xml:$HOME/.config/openbox/rc.xml"
     "lxqt.conf:$HOME/.config/lxqt/lxqt.conf"
-    #"lxqt-config-locale.conf:$HOME/.config/lxqt/lxqt-config-locale.conf"
+    "lxqt-config-locale.conf:$HOME/.config/lxqt/lxqt-config-locale.conf"
     #"panel.conf:$HOME/.config/lxqt/panel.conf"
     #"session.conf:$HOME/.config/lxqt/session.conf"
     #"settings.conf:$HOME/.config/pcmanfm-qt/lxqt/settings.conf"
