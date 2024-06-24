@@ -44,15 +44,27 @@ sleep 2
 
 
 ################ Phase 4: Configure the desktop for LXQt ################
+
+# Remove images
+WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
+GRAPH_DIR="/usr/share/lxqt/graphics"
+sudo rm -f $WALLPAPER_DIR/*
+sudo rm -f $GRAPH_DIR/*
+
+# Download the new image from GitHub
+sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.svg"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
+sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
+
 # Define an array of files to download and replace
 declare -a files=(
     "rc.xml:$HOME/.config/openbox/rc.xml"
     "lxqt.conf:$HOME/.config/lxqt/lxqt.conf"
     "lxqt-config-locale.conf:$HOME/.config/lxqt/lxqt-config-locale.conf"
-    "panel.conf:$HOME/.config/lxqt/panel.conf"
-    "session.conf:$HOME/.config/lxqt/session.conf"
-    "settings.conf:$HOME/.config/pcmanfm-qt/lxqt/settings.conf"
-    "01_debian.conf:/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"
+    #"panel.conf:$HOME/.config/lxqt/panel.conf"
+    #"session.conf:$HOME/.config/lxqt/session.conf"
+    #"settings.conf:$HOME/.config/pcmanfm-qt/lxqt/settings.conf"
+    #"01_debian.conf:/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"
 )
 
 # GitHub repository URL
@@ -91,17 +103,6 @@ for entry in "${files[@]}"; do
     IFS=':' read -ra file <<< "$entry"
     download_file "${file[0]}" "${file[1]}"
 done
-
-# Download images
-WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
-GRAPH_DIR="/usr/share/lxqt/graphics"
-sudo rm -f $WALLPAPER_DIR/*
-sudo rm -f $GRAPH_DIR/*
-
-# Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.svg"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
-sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
 
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
