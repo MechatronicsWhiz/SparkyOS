@@ -29,8 +29,8 @@ sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com
 
 # Define an array of files to download and replace
 declare -a files=(
-    "rc.xml:$HOME/.config/openbox/rc.xml"
-    "lxqt.conf:$HOME/.config/lxqt/lxqt.conf"
+    #"rc.xml:$HOME/.config/openbox/rc.xml"
+    #"lxqt.conf:$HOME/.config/lxqt/lxqt.conf"
     "lxqt-config-locale.conf:$HOME/.config/lxqt/lxqt-config-locale.conf"
     "panel.conf:$HOME/.config/lxqt/panel.conf"
     "session.conf:$HOME/.config/lxqt/session.conf"
