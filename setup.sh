@@ -88,8 +88,8 @@ download_file() {
 
 # Download each file from GitHub
 for entry in "${files[@]}"; do
-    IFS=':' read -ra file <<< "$entry"
-    download_file "${file[0]}" "${file[1]}"
+    #IFS=':' read -ra file <<< "$entry"
+    #download_file "${file[0]}" "${file[1]}"
 done
 
 # Download images
