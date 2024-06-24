@@ -1,4 +1,4 @@
-################ Phase 3: Configure the desktop for LXQt ################
+################ Phase 4: Configure the desktop for LXQt ################
 # Remove images
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 GRAPH_DIR="/usr/share/lxqt/graphics"
@@ -35,7 +35,7 @@ for local_path in "${!config_dir[@]}"; do
 done
 
 echo "##################################################################"
-echo "########################## Phase 3 done ##########################"
+echo "########################## Phase 4 done ##########################"
 sleep 2
 
 sudo reboot
