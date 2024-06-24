@@ -15,13 +15,13 @@ config_url="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/con
 
 # Define an associative array with local paths as keys and remote file names as values
 declare -A config_dir=(
-    #["$HOME/.config/openbox/rc.xml"]="rc.xml"
-    #["$HOME/.config/lxqt/lxqt.conf"]="lxqt.conf"
-    #["$HOME/.config/lxqt/lxqt-config-locale.conf"]="lxqt-config-locale.conf"
+    ["$HOME/.config/openbox/rc.xml"]="rc.xml"
+    ["$HOME/.config/lxqt/lxqt.conf"]="lxqt.conf"
+    ["$HOME/.config/lxqt/lxqt-config-locale.conf"]="lxqt-config-locale.conf"
     ["$HOME/.config/lxqt/panel.conf"]="panel.conf"
     ["$HOME/.config/lxqt/session.conf"]="session.conf"
     ["$HOME/.config/pcmanfm-qt/lxqt/settings.conf"]="settings.conf"
-    #["/media/pi/rootfs/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"]="01_debian.conf"
+    ["/media/pi/rootfs/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"]="01_debian.conf"
 )
 
 # Loop through the array and download each file
