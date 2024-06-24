@@ -27,37 +27,8 @@ sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.co
 sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
 
-# Function to download files
-# GitHub repository URL
-CONFIG_DIR="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration/"
-download_file() {
-    local filename=$1
-    local local_path=$2
-    local config_url="${CONFIG_DIR}${filename}"
-    local dir_path=$(dirname "${local_path}")
+# Download config files
 
-    # Create directory if it doesn't exist
-    if [ ! -d "${dir_path}" ]; then
-        sudo mkdir -p "${dir_path}"
-        if [ $? -eq 0 ]; then
-            echo "Created directory ${dir_path}"
-        else
-            echo "Failed to create directory ${dir_path}"
-            exit 1
-        fi
-    fi
-
-    # Download the file
-    sudo wget -q --show-progress --no-check-certificate -O "${local_path}" "${config_url}"
-    if [ $? -eq 0 ]; then
-        echo "Successfully downloaded ${filename} to ${local_path}"
-    else
-        echo "Failed to download ${filename}"
-        exit 1
-    fi
-}
-
-download_file "${file[0]}" "${file[1]}"
 
 ################ Phase 4: Install additional packages and configure autologin ################
 # Install Thonny
