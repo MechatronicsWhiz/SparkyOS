@@ -6,12 +6,12 @@ sudo rm -f $WALLPAPER_DIR/*
 sudo rm -f $GRAPH_DIR/*
 
 # Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper1.svg"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/wallpaper2.png"
-sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/resources/settings_icon.png"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.svg"
+sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
+sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/settings_icon.png"
 
 # Download configuration files
-config_url="https://raw.githubusercontent.com/MechatronicsWhiz/sparkyos/main/configration"
+config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration"
 
 # Define an associative array with local paths as keys and remote file names as values
 declare -A config_dir=(
