@@ -1,10 +1,4 @@
 #!/bin/bash
-################ Phase 1: Update and install LXQt, GVFS ################
-sudo apt-get update
-sudo apt-get upgrade -y
-echo "##################################################################"
-echo "########################## Phase 1 done ##########################"
-sleep 2
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
@@ -38,13 +32,11 @@ sudo apt-get install -y chromium
 # pip install scikit-learn --break-system-packages
 # python3 -m pip install mediapipe --break-system-packages
 
-echo "##################################################################"
-echo "########################## Phase 3 done ##########################"
-sleep 2
-
-################ Reboot ################
 # Enable the autologin service
 sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
 sudo systemctl enable lightdm.service
+sleep 2
 
-echo "System update and setup completed successfully. Rebooting..."
+echo "##################################################################"
+echo "########################## Phase 3 done ##########################"
+sudo reboot
