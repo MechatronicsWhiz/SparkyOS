@@ -1,0 +1,7 @@
+system-config-printer.desktop
+lxqt-leave.desktop
+lxqt-hibernate.desktop
+lxqt-suspend.desktop
+lxqt-lockscreen.desktop
+qterminal-drop.desktop
+vim.desktop
