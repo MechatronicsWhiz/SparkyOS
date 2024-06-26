@@ -21,7 +21,7 @@ declare -A config_dir=(
     ["$HOME/.config/lxqt/panel.conf"]="panel.conf"
     ["$HOME/.config/lxqt/session.conf"]="session.conf"
     ["$HOME/.config/pcmanfm-qt/lxqt/settings.conf"]="settings.conf"
-    ["/media/pi/rootfs/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"]="01_debian.conf"
+    ["/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"]="01_debian.conf"
 )
 
 # Loop through the array and download each file
