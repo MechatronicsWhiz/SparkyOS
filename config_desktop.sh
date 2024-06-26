@@ -44,6 +44,12 @@ change_menu=(
     "qterminal.desktop"
 )
 
+# Loop through change_menu and download
+for file in "${change_menu[@]}"; do
+    sudo wget -O "/usr/share/applications/${file}" "${menu_url}${file}"
+done
+sudo wget -O /etc/xdg/menus/lxqt-applications.menu https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration/lxqt-applications.menu
+
 remove_menu=(
     "system-config-printer.desktop"
     "lxqt-leave.desktop"
@@ -53,11 +59,6 @@ remove_menu=(
     "qterminal-drop.desktop"
     "vim.desktop"
 )
-
-# Loop through change_menu and download
-for file in "${change_menu[@]}"; do
-    sudo wget -O "/usr/share/applications/${file}" "${menu_url}${file}"
-done
 
 # Remove existing files
 for file in "${remove_menu[@]}"; do
