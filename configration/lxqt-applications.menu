@@ -159,48 +159,6 @@
 		</Include>
 		</Menu> <!-- End Other -->
 
-	<!-- Settings -->
-	<Menu>
-		<Name>DesktopSettings</Name>
-		<Directory>lxde-settings.directory</Directory>
-		<Menu>
-			<Name>LXQtSettings</Name>
-			<Directory>lxqt-settings.directory</Directory>
-			<Include>
-				<And>
-					<Category>LXQt</Category>
-					<Or>
-						<Category>Settings</Category>
-						<Category>PackageManager</Category>
-					</Or>
-				</And>
-				<!-- Include some optional components here -->
-				<Filename>pcmanfm-qt-desktop-pref.desktop</Filename>
-			</Include>
-			<Layout>
-				<Filename>lxqt-config.desktop</Filename>
-				<Separator/>
-				<Merge type="menus"/>
-				<Merge type="files"/>
-			</Layout>
-		</Menu>
-		<OnlyUnallocated/>
-		<Include>
-			<Or>
-				<Category>Settings</Category>
-				<Category>PackageManager</Category>
-			</Or>
-		</Include>
-		<Exclude>
-			<Or>
-				<Filename>lxqt-config.desktop</Filename>
-			</Or>
-		</Exclude>
-		<Layout>
-			<Merge type="menus"/>
-			<Merge type="files"/>
-		</Layout>
-	</Menu> <!-- End Settings -->
 
 	<!-- Leave -->
 	<Menu>
