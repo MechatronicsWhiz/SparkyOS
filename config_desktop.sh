@@ -10,7 +10,7 @@ sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.co
 sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
 sudo wget -O $GRAPH_DIR/$"settings_icon.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/settings_icon.png"
 
-# Download configuration files
+# Download configuration change_menu
 config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration"
 
 # Define an associative array with local paths as keys and remote file names as values
@@ -32,6 +32,36 @@ for local_path in "${!config_dir[@]}"; do
     mkdir -p "$(dirname "$local_path")"     # Create the directory if it does not exist
     wget -O "$local_path" "$remote_url"     # Download the file/replace the file
 
+done
+
+# Update the menu items
+menu_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration/"
+change_menu=(
+    "htop.desktop"
+    "lxqt-config.desktop"
+    "obconf.desktop"
+    "pcmanfm-qt.desktop"
+    "qterminal.desktop"
+)
+
+remove_menu=(
+    "system-config-printer.desktop"
+    "lxqt-leave.desktop"
+    "lxqt-hibernate.desktop"
+    "lxqt-suspend.desktop"
+    "lxqt-lockscreen.desktop"
+    "qterminal-drop.desktop"
+    "vim.desktop"
+)
+
+# Loop through change_menu and download
+for file in "${change_menu[@]}"; do
+    sudo wget -O "/usr/share/applications/${file}" "${menu_url}${file}"
+done
+
+# Remove existing files
+for file in "${remove_menu[@]}"; do
+    sudo rm "/usr/share/applications/${file}"
 done
 
 echo "##################################################################"
