@@ -56,6 +56,8 @@ cleanup_temp_files() {
 install_desktop(){
   sudo apt-get --no-install-recommends install -y lxqt-core gvfs
   sudo apt-get install -y openbox lightdm #
+  sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
+  sudo systemctl enable lightdm.service
   
   echo "Desktop installed"
   sleep 2
@@ -81,8 +83,8 @@ install_packages(){
   # python3 -m pip install mediapipe --break-system-packages
   
   # Enable the autologin service
-  sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
-  sudo systemctl enable lightdm.service
+  # sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
+  # sudo systemctl enable lightdm.service
   
   echo "Packges installed"
   sleep 2
