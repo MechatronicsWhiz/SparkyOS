@@ -5,7 +5,7 @@ sudo apt-get upgrade -y
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
-sudo apt-get install -y weston xwayland lightdm
+sudo apt-get install -y weston xwayland lightdm #openbox
 
 echo "##################################################################"
 echo "########################## Phase 2 done ##########################"
