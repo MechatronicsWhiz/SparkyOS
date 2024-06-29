@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Function to download all files from a GitHub folder
+# Function to download specified files from a GitHub folder URL to a specified directory
 # Arguments:
 #   $1: GitHub folder URL
-function download_apps {
+#   $2: Array of files to download
+function download_files {
     github_folder_url="$1"
-    local_file_dir="/usr/local/bin/" # Local directory for non-.desktop files
-    local_app_dir="~/.local/share/applications/" # Local directory for .desktop files
+    files=("${@:2}")
 
-    # Fetch list of files from GitHub folder using GitHub API (assuming GitHub raw URL)
-    files=$(curl -sS "${github_folder_url}?recursive=1" | grep -oP '"path":"\K[^"]+' | grep -v '/$')
+    local_file_dir="/usr/local/bin/"
+    local_app_dir="$HOME/.local/share/applications/"
 
     # Loop through each file and download to the appropriate directory
-    for file in ${files[@]}; do
+    for file in "${files[@]}"; do
         # Determine target directory based on file type
         if [[ "$file" == *.desktop ]]; then
             target_dir="$local_app_dir"
@@ -28,6 +28,19 @@ function download_apps {
     done
 }
 
-# Example usage:
+# Download files:
+file_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/"
+files_to_download=(
+    "styles.py"
+    "functions.sh"
+)
+download_files "$file_url" "${files_to_download[@]}"
+
+# Download apps
 app_builder_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/apps/app_builder/"
-download_apps "$app_builder_url"
+app_builder_download=(
+    "AppBuilder.desktop"
+    "app_builder.py"
+    "app_builder_icon.png"
+)
+download_files "$app_builder_url" "${app_builder_download[@]}"
