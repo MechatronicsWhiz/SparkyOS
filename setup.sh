@@ -9,21 +9,21 @@ sudo chmod +x $HOME/install_desktop.sh
 sudo chmod +x $HOME/config_desktop.sh
 sudo chmod +x $HOME/install_apps.sh
 
-# 2. Execute the first script
+# 2. Install desktop
 ./install_desktop.sh
 if [ $? -ne 0 ]; then
   echo "install_desktop.sh failed"
   exit 1
 fi
 
-# Execute the second script
+# Configure desktop
 ./config_desktop.sh
 if [ $? -ne 0 ]; then
   echo "config_desktop.sh failed"
   exit 1
 fi
 
-# Execute the second script
+# Install apps
 ./install_apps.sh
 if [ $? -ne 0 ]; then
   echo "install_apps.sh failed"
