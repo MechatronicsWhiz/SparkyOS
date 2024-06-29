@@ -4,18 +4,18 @@ import subprocess
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox, QCheckBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QProcess
-from styles import stylesheet  # Assuming stylesheet is imported correctly
+from styles import stylesheet 
 
 class DesktopFileCreator(QWidget):
     def __init__(self):
         super().__init__()
-        self.setStyleSheet(stylesheet)  # Assuming `stylesheet` is imported correctly
+        self.setStyleSheet(stylesheet) 
         self.initUI()
         self.process = None  # Initialize QProcess instance
 
     def initUI(self):
-        self.setWindowTitle('Desktop File Creator')
-        self.setWindowIcon(QIcon('icon.png'))  # Replace 'icon.png' with your icon file path
+        self.setWindowTitle('App Builder')
+        self.setWindowIcon(QIcon('icon.png'))  
         self.setGeometry(100, 100, 400, 250)
 
         layout = QVBoxLayout()
