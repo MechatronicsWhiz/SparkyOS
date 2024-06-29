@@ -11,7 +11,7 @@ sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.co
 sudo wget -O $GRAPH_DIR/$"settings_icon.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/settings_icon.svg"
 
 # Download configuration change_menu
-config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration"
+config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration"
 
 # Define an associative array with local paths as keys and remote file names as values
 declare -A config_dir=(
@@ -35,7 +35,7 @@ for local_path in "${!config_dir[@]}"; do
 done
 
 # Update the menu items
-menu_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration/"
+menu_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/"
 change_menu=(
     "htop.desktop"
     "lxqt-config.desktop"
@@ -48,7 +48,7 @@ change_menu=(
 for file in "${change_menu[@]}"; do
     sudo wget -O "/usr/share/applications/${file}" "${menu_url}${file}"
 done
-sudo wget -O /etc/xdg/menus/lxqt-applications.menu https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configration/lxqt-applications.menu
+sudo wget -O /etc/xdg/menus/lxqt-applications.menu https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/lxqt-applications.menu
 
 remove_menu=(
     "system-config-printer.desktop"
