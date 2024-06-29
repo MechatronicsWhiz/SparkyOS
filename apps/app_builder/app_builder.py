@@ -1,7 +1,7 @@
 import os
 import sys
 import subprocess
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QFileDialog, QMessageBox, QCheckBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QProcess
 from styles import stylesheet  # Assuming stylesheet is imported correctly
@@ -16,7 +16,7 @@ class DesktopFileCreator(QWidget):
     def initUI(self):
         self.setWindowTitle('Desktop File Creator')
         self.setWindowIcon(QIcon('icon.png'))  # Replace 'icon.png' with your icon file path
-        self.setGeometry(100, 100, 400, 200)
+        self.setGeometry(100, 100, 400, 250)
 
         layout = QVBoxLayout()
 
@@ -45,6 +45,9 @@ class DesktopFileCreator(QWidget):
         layout.addWidget(self.script_label)
         layout.addLayout(script_layout)
 
+        self.add_to_panel_checkbox = QCheckBox('Add App to panel?')
+        layout.addWidget(self.add_to_panel_checkbox)
+
         self.create_button = QPushButton('Create App')
         self.create_button.clicked.connect(self.createDesktopFile)
         layout.addWidget(self.create_button)
@@ -71,6 +74,7 @@ class DesktopFileCreator(QWidget):
         app_name = self.name_edit.text()
         icon_file = self.icon_edit.text()
         script_file = self.script_edit.text()
+        add_to_panel = self.add_to_panel_checkbox.isChecked()
 
         if not (app_name and icon_file and script_file):
             QMessageBox.warning(self, 'Warning', 'Please fill all fields.')
@@ -94,8 +98,9 @@ class DesktopFileCreator(QWidget):
                 desktop_file.write(desktop_file_content)
             QMessageBox.information(self, 'Success', f'App created: {desktop_file_path}')
 
-            # Call function to add shortcut to LXQt panel
-            self.call_add_app_to_panel(desktop_file_path)
+            if add_to_panel:
+                # Call function to add shortcut to LXQt panel
+                self.call_add_app_to_panel(desktop_file_path)
 
         except Exception as e:
             QMessageBox.critical(self, 'Error', f'Failed to create App: {str(e)}')
