@@ -172,8 +172,8 @@ stylesheet = """
     /*-----QCheckBox-----*/
     QCheckBox {
         background-color: transparent;
-        color: #fff;
-        font-size: 10px;
+        color: #c2c7d5;
+        font-size: 25px;
         font-weight: bold;
         border: none;
         border-radius: 5px;
@@ -183,8 +183,8 @@ stylesheet = """
         color: #b1b1b1;
         background-color: #E53935;
         border: 1px solid darkgray;
-        width: 12px;
-        height: 12px;
+        width: 24px;
+        height: 24px;
     }
 
     QCheckBox::indicator:checked {
