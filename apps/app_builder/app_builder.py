@@ -15,7 +15,7 @@ class DesktopFileCreator(QWidget):
 
     def initUI(self):
         self.setWindowTitle('App Builder')
-        self.setWindowIcon(QIcon('icon.png'))  
+        self.setWindowIcon(QIcon('app_builder_icon.png'))  
         self.setGeometry(100, 100, 400, 250)
 
         layout = QVBoxLayout()
@@ -25,7 +25,7 @@ class DesktopFileCreator(QWidget):
         layout.addWidget(self.name_label)
         layout.addWidget(self.name_edit)
 
-        self.icon_label = QLabel('App icon:')
+        self.icon_label = QLabel('App Icon:')
         self.icon_edit = QLineEdit()
         self.icon_button = QPushButton('Browse')
         self.icon_button.clicked.connect(self.selectIconFile)
@@ -45,7 +45,7 @@ class DesktopFileCreator(QWidget):
         layout.addWidget(self.script_label)
         layout.addLayout(script_layout)
 
-        self.add_to_panel_checkbox = QCheckBox('Add App to panel?')
+        self.add_to_panel_checkbox = QCheckBox('Add App to Panel?')
         layout.addWidget(self.add_to_panel_checkbox)
 
         self.create_button = QPushButton('Create App')
