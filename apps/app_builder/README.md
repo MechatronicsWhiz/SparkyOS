@@ -6,7 +6,4 @@
 
   app_builder.py
   app_builder_icon.png
-  functions.sh
-  styles.py
-
 
