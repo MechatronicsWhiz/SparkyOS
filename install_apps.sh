@@ -3,7 +3,7 @@
 # Function to download all files from a GitHub folder
 # Arguments:
 #   $1: GitHub folder URL
-function download_all_files {
+function download_apps {
     github_folder_url="$1"
     local_file_dir="/usr/local/bin/" # Local directory for non-.desktop files
     local_app_dir="~/.local/share/applications/" # Local directory for .desktop files
@@ -29,5 +29,5 @@ function download_all_files {
 }
 
 # Example usage:
-app_builder_url="https://api.github.com/repos/MechatronicsWhiz/SparkyOS/contents/apps/app_builder"
-download_all_files "$app_builder_url"
+app_builder_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/apps/app_builder/"
+download_apps "$app_builder_url"
