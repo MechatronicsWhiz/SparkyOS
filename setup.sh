@@ -3,21 +3,30 @@
 # 1. Download shell scripts
 sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/install_desktop.sh" -O $HOME/install_desktop.sh
 sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/config_desktop.sh" -O $HOME/config_desktop.sh
+sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/install_apps.sh" -O $HOME/install_apps.sh
 
 sudo chmod +x $HOME/install_desktop.sh
 sudo chmod +x $HOME/config_desktop.sh
+sudo chmod +x $HOME/install_apps.sh
 
 # 2. Execute the first script
 ./install_desktop.sh
 if [ $? -ne 0 ]; then
-  echo "script1.sh failed"
+  echo "install_desktop.sh failed"
   exit 1
 fi
 
 # Execute the second script
 ./config_desktop.sh
 if [ $? -ne 0 ]; then
-  echo "script2.sh failed"
+  echo "config_desktop.sh failed"
+  exit 1
+fi
+
+# Execute the second script
+./install_apps.sh
+if [ $? -ne 0 ]; then
+  echo "install_apps.sh failed"
   exit 1
 fi
 
