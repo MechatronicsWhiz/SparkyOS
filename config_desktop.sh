@@ -1,13 +1,13 @@
 ################ Phase 4: Configure the desktop for LXQt ################
 # Remove images
-WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
+WALLPAPER_DIR="/usr/share/images/desktop-base"
 GRAPH_DIR="/usr/share/lxqt/graphics"
 sudo rm -f $WALLPAPER_DIR/*
 sudo rm -f $GRAPH_DIR/*
 
 # Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.svg"
-sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
+sudo wget -O $WALLPAPER_DIR/$"desktop_background.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.png"
+sudo wget -O $WALLPAPER_DIR/$"login-background.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.svg"
 sudo wget -O $GRAPH_DIR/$"apps.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/apps.png"
 
 # Download configuration change_menu
