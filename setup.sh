@@ -9,7 +9,7 @@ sudo chmod +x $HOME/install_desktop.sh
 sudo chmod +x $HOME/config_desktop.sh
 sudo chmod +x $HOME/install_apps.sh
 
-# 2. Install desktop
+# 2. Install desktop environment
 ./install_desktop.sh
 if [ $? -ne 0 ]; then
   echo "install_desktop.sh failed"
