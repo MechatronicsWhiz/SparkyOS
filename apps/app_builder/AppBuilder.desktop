@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=App Builder
+Name=App Builder 
 Exec=python3 "/usr/local/bin/app_builder.py"
 Icon=/usr/local/bin/app_builder_icon.png
 Terminal=false
