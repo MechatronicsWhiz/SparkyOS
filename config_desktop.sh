@@ -8,7 +8,7 @@ sudo rm -f $GRAPH_DIR/*
 # Download the new image from GitHub
 sudo wget -O $WALLPAPER_DIR/$"wallpaper1.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.svg"
 sudo wget -O $WALLPAPER_DIR/$"wallpaper2.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
-sudo wget -O $GRAPH_DIR/$"settings_icon.svg" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/settings_icon.svg"
+sudo wget -O $GRAPH_DIR/$"apps.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/apps.png"
 
 # Download configuration change_menu
 config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration"
