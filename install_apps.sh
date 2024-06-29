@@ -23,12 +23,12 @@ function download_files {
         # Create directory if it does not exist
         mkdir -p "$target_dir"
 
-        # Download file
-        curl -sS "${github_folder_url}${file}" -o "${target_dir}${file}"
+        # Download file using wget
+        sudo wget -q --show-progress -O "${target_dir}${file}" "${github_folder_url}${file}"
     done
 }
 
-# Download files:
+# Download files
 file_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/"
 files_to_download=(
     "styles.py"
@@ -44,3 +44,4 @@ app_builder_download=(
     "app_builder_icon.png"
 )
 download_files "$app_builder_url" "${app_builder_download[@]}"
+
