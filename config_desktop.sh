@@ -1,6 +1,6 @@
 ################ Phase 4: Configure the desktop for LXQt ################
 # Remove images
-WALLPAPER_DIR="/usr/share/images/desktop-base"
+WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 GRAPH_DIR="/usr/share/lxqt/graphics"
 sudo rm -f $WALLPAPER_DIR/*
 sudo rm -f $GRAPH_DIR/*
