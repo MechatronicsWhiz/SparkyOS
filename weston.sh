@@ -18,6 +18,15 @@ EOL
 # Set Weston as the default session for LightDM
 sudo sed -i '/^#.*user-session=/c\user-session=weston' /etc/lightdm/lightdm.conf
 
+# Enable LightDM to start at boot
+sudo systemctl enable lightdm
+
+# Start LightDM service
+sudo systemctl start lightdm
+
+# Check LightDM status
+sudo systemctl status lightdm
+
 # Reboot the system
 echo "Installation complete. The system will now reboot."
 sudo reboot
