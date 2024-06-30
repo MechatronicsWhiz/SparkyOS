@@ -1,32 +1,12 @@
 #!/bin/bash
 
-# Update and upgrade the system
-sudo apt update && sudo apt upgrade -y
+# Install Xorg and the PIXEL environment
+sudo apt install xserver-xorg raspberrypi-ui-mods
 
-# Install LightDM and Weston
-sudo apt install -y lightdm weston
+# Configure the system to boot to desktop
+sudo raspi-config nonint do_boot_behaviour B4
 
-# Create the Weston session file for LightDM
-sudo tee /usr/share/xsessions/weston.desktop > /dev/null <<EOL
-[Desktop Entry]
-Name=Weston
-Comment=This session runs Weston
-Exec=weston
-Type=Application
-EOL
+# Optional: Enable Wayland
+sudo raspi-config nonint do_boot_behaviour B5
 
-# Set Weston as the default session for LightDM
-sudo sed -i '/^#.*user-session=/c\user-session=weston' /etc/lightdm/lightdm.conf
-
-# Enable LightDM to start at boot
-sudo systemctl enable lightdm
-
-# Start LightDM service
-sudo systemctl start lightdm
-
-# Check LightDM status
-sudo systemctl status lightdm
-
-# Reboot the system
-echo "Installation complete. The system will now reboot."
-sudo reboot
+echo "Setup complete! Reboot your Raspberry Pi to start the desktop environment."
