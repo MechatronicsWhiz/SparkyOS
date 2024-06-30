@@ -1,20 +1,12 @@
-################ Phase 4: Configure the desktop for LXQt ################
-# Remove images
+#!/bin/bash
+
+# Define directories
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 GRAPH_DIR="/usr/share/lxqt/graphics"
-sudo rm -f $WALLPAPER_DIR/*
-sudo rm -f $GRAPH_DIR/*
+CONFIG_URL="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration"
 
-# Download the new image from GitHub
-sudo wget -O $WALLPAPER_DIR/$"desktop_background.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.png"
-sudo wget -O $WALLPAPER_DIR/$"login-background.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
-sudo wget -O $GRAPH_DIR/$"apps.png" $"https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/apps.png"
-
-# Download configuration change_menu
-config_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration"
-
-# Define an associative array with local paths as keys and remote file names as values
-declare -A config_dir=(
+# Define associative arrays
+declare -A CONFIG_FILES=(
     ["$HOME/.config/openbox/rc.xml"]="rc.xml"
     ["$HOME/.config/lxqt/lxqt.conf"]="lxqt.conf"
     ["$HOME/.config/lxqt/lxqt-config-locale.conf"]="lxqt-config-locale.conf"
@@ -24,19 +16,7 @@ declare -A config_dir=(
     ["/usr/share/lightdm/lightdm-gtk-greeter.conf.d/01_debian.conf"]="01_debian.conf"
 )
 
-# Loop through the array and download each file
-for local_path in "${!config_dir[@]}"; do
-    remote_file="${config_dir[$local_path]}"
-    remote_url="$config_url/$remote_file"
-
-    mkdir -p "$(dirname "$local_path")"     # Create the directory if it does not exist
-    wget -O "$local_path" "$remote_url"     # Download the file/replace the file
-
-done
-
-# Update the menu items
-menu_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/"
-change_menu=(
+MENU_FILES=(
     "htop.desktop"
     "lxqt-config.desktop"
     "obconf.desktop"
@@ -44,13 +24,7 @@ change_menu=(
     "qterminal.desktop"
 )
 
-# Loop through change_menu and download
-for file in "${change_menu[@]}"; do
-    sudo wget -O "/usr/share/applications/${file}" "${menu_url}${file}"
-done
-sudo wget -O /etc/xdg/menus/lxqt-applications.menu https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/lxqt-applications.menu
-
-remove_menu=(
+REMOVE_MENU_FILES=(
     "system-config-printer.desktop"
     "lxqt-leave.desktop"
     "lxqt-hibernate.desktop"
@@ -60,13 +34,35 @@ remove_menu=(
     "vim.desktop"
 )
 
-# Remove existing files
-for file in "${remove_menu[@]}"; do
-    sudo rm "/usr/share/applications/${file}"
+# Remove existing images
+sudo rm -f $WALLPAPER_DIR/* $GRAPH_DIR/*
+
+# Download new images
+sudo wget -q -O $WALLPAPER_DIR/desktop_background.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.png"
+sudo wget -q -O $WALLPAPER_DIR/login-background.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
+sudo wget -q -O $GRAPH_DIR/apps.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/apps.png"
+
+# Download and replace configuration files
+for local_path in "${!CONFIG_FILES[@]}"; do
+    remote_file="${CONFIG_FILES[$local_path]}"
+    remote_url="$CONFIG_URL/$remote_file"
+
+    mkdir -p "$(dirname "$local_path")"
+    wget -q -O "$local_path" "$remote_url"
 done
 
+# Update menu items
+for file in "${MENU_FILES[@]}"; do
+    sudo wget -q -O "/usr/share/applications/${file}" "${CONFIG_URL}/${file}"
+done
+sudo wget -q -O /etc/xdg/menus/lxqt-applications.menu "${CONFIG_URL}/lxqt-applications.menu"
+
+# Remove obsolete menu items
+for file in "${REMOVE_MENU_FILES[@]}"; do
+    sudo rm -f "/usr/share/applications/${file}"
+done
+
+# Completion message
 echo "##################################################################"
 echo "########################## Phase 4 done ##########################"
 sleep 2
-
-
