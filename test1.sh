@@ -1,12 +1,28 @@
 #!/bin/bash
 
-# Install Xorg and the PIXEL environment
-sudo apt install xserver-xorg raspberrypi-ui-mods
+# Update package list and install lxqt-core with minimal dependencies
+sudo apt-get update
+sudo apt-get --no-install-recommends install -y lxqt-core gvfs
 
-# Configure the system to boot to desktop
-sudo raspi-config nonint do_boot_behaviour B4
+# Install Sway (Wayland compositor) and SDDM (display manager)
+sudo apt-get install -y sway sddm
 
-# Optional: Enable Wayland
-sudo raspi-config nonint do_boot_behaviour B5
+# Enable SDDM to start on boot
+sudo systemctl enable sddm
 
-echo "Setup complete! Reboot your Raspberry Pi to start the desktop environment."
+# Create a custom session file for Sway with LXQt
+sudo bash -c 'cat > /usr/share/wayland-sessions/lxqt-sway.desktop <<EOF
+[Desktop Entry]
+Name=LXQt with Sway
+Comment=Start LXQt desktop environment with Sway
+Exec=sway
+Type=Application
+EOF'
+
+# Create the Sway configuration directory if it doesn't exist
+mkdir -p ~/.config/sway
+
+# Configure Sway to start LXQt
+echo 'exec startlxqt' > ~/.config/sway/config
+
+echo "Installation complete. Reboot your system to start LXQt with Sway on Wayland."
