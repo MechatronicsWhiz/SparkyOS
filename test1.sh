@@ -25,4 +25,7 @@ mkdir -p ~/.config/sway
 # Configure Sway to start LXQt
 echo 'exec startlxqt' > ~/.config/sway/config
 
+# Enable the autologin service
+sudo raspi-config nonint do_boot_behaviour B4 # autologin
+
 echo "Installation complete. Reboot your system to start LXQt with Sway on Wayland."
