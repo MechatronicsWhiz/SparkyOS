@@ -6,14 +6,14 @@ sudo apt upgrade -y
 
 # Install LXQt core with minimal dependencies and LightDM display manager
 sudo apt-get --no-install-recommends install -y lxqt-core
-sudo apt-get install -y lightdm
+sudo apt-get install lightdm -y
 
 # Enable the autologin service in LightDM
 sudo raspi-config nonint do_boot_behaviour B4 # autologin
 sudo systemctl enable lightdm.service
 
 # Install Sway and necessary tools
-sudo apt install -y sway
+sudo apt install sway -y
 
 # Create Sway configuration directory and copy example configuration
 mkdir -p ~/.config/sway
@@ -36,5 +36,5 @@ autologin-session=sway
 EOL
 
 # Reboot to apply changes
-echo "#################################### Configuration complete. Rebooting now... ####################################"
+echo "#################################### State 1 done ####################################"
 sudo reboot
