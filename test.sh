@@ -6,7 +6,7 @@ sudo apt upgrade -y
 
 # Install display manager
 sudo apt-get --no-install-recommends install -y lxqt-core 
-sudo apt-get install -y lightdm
+sudo apt-get install -y lightdm openbox
 
 # Configure LightDM to use LXQt as the default session
 sudo sed -i 's/^#user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
