@@ -5,10 +5,7 @@ sudo apt-get update
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs gvfs-backends gvfs-fuse
 
 # Install Sway (Wayland compositor) and SDDM (display manager)
-sudo apt-get install -y sway sddm
-
-# Enable SDDM to start on boot
-sudo systemctl enable sddm
+sudo apt-get install -y lightdm sway
 
 # Create a custom session file for Sway with LXQt
 sudo bash -c 'cat > /usr/share/wayland-sessions/lxqt-sway.desktop <<EOF
