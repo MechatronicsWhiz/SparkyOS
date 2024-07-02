@@ -8,13 +8,10 @@ sudo apt upgrade -y
 sudo apt-get --no-install-recommends install -y lxqt-core 
 sudo apt-get install -y lightdm openbox
 
-# Configure LightDM to use LXQt as the default session
-sudo sed -i 's/^#user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
-
 # Enable the autologin service
 sudo raspi-config nonint do_boot_behaviour B4 # autologin
 sudo systemctl enable lightdm.service
-
+sudo reboot
 echo "#################################### Stage 1 done ####################################"
 
 
