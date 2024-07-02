@@ -3,9 +3,9 @@
 # Update package list and install lxqt-core with minimal dependencies
 sudo apt update
 sudo apt upgrade -y
-sudo apt-get --no-install-recommends install -y lxqt-core 
 
-# Install Sway (Wayland compositor) and SDDM (display manager)
+# Install display manager
+sudo apt-get --no-install-recommends install -y lxqt-core 
 sudo apt-get install -y lightdm
 
 # Configure LightDM to use LXQt as the default session
