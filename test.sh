@@ -8,7 +8,7 @@ sudo apt upgrade -y
 sudo apt-get --no-install-recommends install -y lxqt-core
 sudo apt-get install -y lightdm
 
-# Enable the autologin service
+# Enable the autologin service in LightDM
 sudo raspi-config nonint do_boot_behaviour B4 # autologin
 sudo systemctl enable lightdm.service
 
@@ -28,9 +28,13 @@ EOL
 # Make the startup script executable
 chmod +x ~/.config/sway/start.sh
 
-# Provide instructions to start Sway
-echo "To start Sway, run ~/.config/sway/start.sh"
+# Configure LightDM to start Sway automatically
+sudo tee -a /etc/lightdm/lightdm.conf > /dev/null <<EOL
+[Seat:*]
+autologin-user=sparky
+autologin-session=sway
+EOL
 
 # Reboot to apply changes
-echo "#################################### Stage 1 done ####################################"
+echo "#################################### Configuration complete. Rebooting now... ####################################"
 sudo reboot
