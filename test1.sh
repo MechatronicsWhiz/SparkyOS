@@ -2,7 +2,7 @@
 
 # Update package list and install lxqt-core with minimal dependencies
 sudo apt-get update
-sudo apt-get --no-install-recommends install -y lxqt-core gvfs
+sudo apt-get --no-install-recommends install -y lxqt-core gvfs gvfs-backends gvfs-fuse
 
 # Install Sway (Wayland compositor) and SDDM (display manager)
 sudo apt-get install -y sway sddm
