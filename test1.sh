@@ -14,6 +14,6 @@ sudo sed -i 's/^#user-session=.*/user-session=lxqt/' /etc/lightdm/lightdm.conf
 sudo raspi-config nonint do_boot_behaviour B4 # autologin
 sudo systemctl enable lightdm.service
 
-echo "Installation complete. Reboot your system to start LXQt with Sway on Wayland."
+echo "#################################### Stage 1 done ####################################"
 
 
