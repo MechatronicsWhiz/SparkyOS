@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Update package list and install lxqt-core with minimal dependencies
-sudo apt-get update
+sudo apt update
+sudo apt upgrade -y
 sudo apt-get --no-install-recommends install -y lxqt-core 
 
 # Install Sway (Wayland compositor) and SDDM (display manager)
