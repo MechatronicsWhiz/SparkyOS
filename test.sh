@@ -11,7 +11,10 @@ sudo apt-get --no-install-recommends install -y lxqt-core gvfs sway lightdm
 CURRENT_USER=$(whoami)
 
 # Configure LightDM for automatic login with the current username
-sudo tee /etc/lightdm/lightdm.conf.d/autologin.conf > /dev/null <<EOF
+# Enable the autologin service
+sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
+sudo systemctl enable lightdm.service
+
 [Seat:*]
 autologin-user=$CURRENT_USER
 autologin-session=sway
