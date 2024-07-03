@@ -1,7 +1,7 @@
 #!/bin/bash
 ################ Phase 1: Update and upgrade ################
-sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
