@@ -29,7 +29,7 @@ function download_files {
 }
 
 # Download files
-file_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration/"
+file_url="https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/configuration/"
 files_to_download=(
     "styles.py"
     "functions.sh"
@@ -37,7 +37,7 @@ files_to_download=(
 download_files "$file_url" "${files_to_download[@]}"
 
 # Download apps
-app_builder_url="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/apps/app_builder/"
+app_builder_url="https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/apps/app_builder/"
 app_builder_download=(
     "AppBuilder.desktop"
     "app_builder.py"
