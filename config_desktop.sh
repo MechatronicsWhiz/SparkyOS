@@ -3,7 +3,7 @@
 # Define directories
 WALLPAPER_DIR="/usr/share/lxqt/wallpapers"
 GRAPH_DIR="/usr/share/lxqt/graphics"
-CONFIG_URL="https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/configuration"
+CONFIG_URL="https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/configuration"
 
 # Define associative arrays
 declare -A CONFIG_FILES=(
@@ -38,9 +38,9 @@ REMOVE_MENU_FILES=(
 sudo rm -f $WALLPAPER_DIR/* $GRAPH_DIR/*
 
 # Download new images
-sudo wget -q -O $WALLPAPER_DIR/desktop_background.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper1.png"
-sudo wget -q -O $WALLPAPER_DIR/login-background.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/wallpaper2.png"
-sudo wget -q -O $GRAPH_DIR/apps.png "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/resources/apps.png"
+sudo wget -q -O $WALLPAPER_DIR/desktop_background.png "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/resources/wallpaper1.png"
+sudo wget -q -O $WALLPAPER_DIR/login-background.png "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/resources/wallpaper2.png"
+sudo wget -q -O $GRAPH_DIR/apps.png "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/resources/apps.png"
 
 # Download and replace configuration files
 for local_path in "${!CONFIG_FILES[@]}"; do
