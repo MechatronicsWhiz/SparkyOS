@@ -49,8 +49,6 @@ app_builder_download=(
 ################ Phase 3: Install additional packages and apps ################
 
 # Install other required packages
-sudo apt-get install -y thonny
-sudo apt-get install -y chromium
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
 
 # Remove some packages and update rpi firmware
