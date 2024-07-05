@@ -44,14 +44,13 @@ app_builder_download=(
     "app_builder_icon.png"
 )
 
+# Install apps
+download_files "$app_builder_url" "${app_builder_download[@]}"
 
 
 ################ Phase 3: Install additional packages and apps ################
 
-# Install other required packages
-sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
-
-# Remove some packages and update rpi firmware
+# Remove problematic packages and update rpi firmware
 # sudo rpi-update -y
 # sudo apt remove python3-rpi.gpio -y
 # sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages
@@ -64,8 +63,7 @@ sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
 # pip install scikit-learn --break-system-packages
 # python3 -m pip install mediapipe --break-system-packages
 
-# Install apps
-download_files "$app_builder_url" "${app_builder_download[@]}"
+
 
 echo "##################################################################"
 echo "########################## Phase 3 done ##########################"
