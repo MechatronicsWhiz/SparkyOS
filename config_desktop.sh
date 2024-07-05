@@ -48,7 +48,7 @@ for local_path in "${!CONFIG_FILES[@]}"; do
     remote_url="$CONFIG_URL/$remote_file"
 
     mkdir -p "$(dirname "$local_path")"
-    wget -q -O "$local_path" "$remote_url"
+    sudo wget -q -O "$local_path" "$remote_url"
 done
 
 # Update menu items
