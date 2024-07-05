@@ -48,11 +48,10 @@ app_builder_download=(
 
 ################ Phase 3: Install additional packages and apps ################
 
-
 # Install other required packages
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
 
-# Remove problematic packages and update rpi firmware
+# Remove some packages and update rpi firmware
 sudo rpi-update -y
 sudo apt remove python3-rpi.gpio -y
 sudo pip3 install rpi-lgpio --upgrade RPi.GPIO --break-system-packages
