@@ -57,7 +57,7 @@ for file in "${MENU_FILES[@]}"; do
 done
 sudo wget -q -O /etc/xdg/menus/lxqt-applications.menu "${CONFIG_URL}/lxqt-applications.menu"
 
-# Remove obsolete menu items
+# Remove certain menu items
 for file in "${REMOVE_MENU_FILES[@]}"; do
     sudo rm -f "/usr/share/applications/${file}"
 done
