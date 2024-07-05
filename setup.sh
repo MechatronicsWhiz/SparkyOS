@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Configure desktop
+# Configure the OS
 ./config_desktop.sh
 if [ $? -ne 0 ]; then
   echo "config_desktop.sh failed"
