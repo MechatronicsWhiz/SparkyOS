@@ -16,7 +16,7 @@ class DesktopFileCreator(QWidget):
     def initUI(self):
         self.setWindowTitle('App Builder')
         self.setWindowIcon(QIcon('app_builder_icon.png'))  
-        self.setGeometry(100, 100, 400, 250)
+        self.setGeometry(200, 0, 400, 250)
 
         layout = QVBoxLayout()
 
