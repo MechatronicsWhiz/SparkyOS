@@ -1,7 +1,7 @@
 #!/bin/bash
 ################ Phase 1: Update and upgrade ################
-sudo apt update
-sudo apt upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 
 ################ Phase 2: Install desktop environment ################
 sudo apt-get --no-install-recommends install -y lxqt-core gvfs
@@ -14,13 +14,13 @@ sleep 2
 
 ################ Phase 3: Install additional packages and configure autologin ################
 # Install Thonny
-# sudo apt-get install -y thonny
+sudo apt-get install -y thonny
 
 # Install Chromium (Chromium is preferred over chromium-browser which may be deprecated in some systems)
-# sudo apt-get install -y chromium
+sudo apt-get install -y chromium
 
 # Install other required packages
-# sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
+sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
 
 # Remove problematic packages and update rpi firmware
 # sudo rpi-update -y
