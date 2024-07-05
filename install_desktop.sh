@@ -16,7 +16,7 @@ sudo raspi-config nonint do_boot_behaviour B4 # Set lightdm to use autologin
 sudo systemctl enable lightdm.service
 
 echo "##################################################################"
-echo "########################## Phase 2 done ##########################"
+echo "########################## Phase 1 done ##########################"
 sleep 2
 
 
