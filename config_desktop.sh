@@ -47,7 +47,7 @@ for local_path in "${!CONFIG_FILES[@]}"; do
     remote_file="${CONFIG_FILES[$local_path]}"
     remote_url="$CONFIG_URL/$remote_file"
 
-    mkdir -p "$(dirname "$local_path")"
+    sudo mkdir -p "$(dirname "$local_path")"
     sudo wget -q -O "$local_path" "$remote_url"
 done
 
