@@ -47,11 +47,7 @@ app_builder_download=(
 
 
 ################ Phase 3: Install additional packages and apps ################
-# Install Thonny
-sudo apt-get install -y thonny
 
-# Install Chromium (Chromium is preferred over chromium-browser which may be deprecated in some systems)
-sudo apt-get install -y chromium
 
 # Install other required packages
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
