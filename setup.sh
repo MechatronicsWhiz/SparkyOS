@@ -21,13 +21,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Configure desktop
-./config_desktop.sh
-if [ $? -ne 0 ]; then
-  echo "config_desktop.sh failed"
-  exit 1
-fi
-
 # Install apps
 ./install_apps.sh
 if [ $? -ne 0 ]; then
@@ -35,6 +28,12 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Configure desktop
+./config_desktop.sh
+if [ $? -ne 0 ]; then
+  echo "config_desktop.sh failed"
+  exit 1
+fi
 echo "###########################################################################"
 echo "############################ Installation done ############################"
 sleep 2
