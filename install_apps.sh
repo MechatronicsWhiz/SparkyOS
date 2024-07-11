@@ -68,7 +68,7 @@ sudo pip install SMBus rpi-ws281x --break-system-packages
 sudo apt-get install -y gcc make build-essential python-dev-is-python3 scons swig python3-pil python3-pil.imagetk
 sudo apt install -y python3-opencv python3-numpy
 sudo apt install -y python3-scipy python3-matplotlib python3-joblib python3-opencv
-pip install scikit-learn --break-system-packages
+pip install scikit-learn picamera --break-system-packages
 python3 -m pip install mediapipe --break-system-packages
 
 echo "##################################################################"
