@@ -53,7 +53,7 @@ download_files "$app_builder_url" "${app_builder_download[@]}"
 sudo apt-get install -y thonny
 
 # Install Chromium (Chromium is preferred over chromium-browser which may be deprecated in some systems)
-sudo apt-get install -y chromium
+sudo apt-get install -y chromium feh
 
 # Install other required packages
 sudo apt-get install -y python3-pyqt5 python3-pyqt5.qtwebengine
