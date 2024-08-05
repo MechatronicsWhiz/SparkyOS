@@ -6,7 +6,7 @@ Comment out sections as needed.
 END
 
 # Function to download and check success
-download_and_verify() {
+download() {
   local url=$1
   local dest=$2
   wget "$url" -O "$dest"
@@ -18,9 +18,9 @@ download_and_verify() {
 }
 
 # 1. Download shell scripts
-download_and_verify "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_desktop.sh" "$HOME/install_desktop.sh"
-download_and_verify "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_apps.sh" "$HOME/install_apps.sh"
-download_and_verify "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/config_desktop.sh" "$HOME/config_desktop.sh"
+download "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_desktop.sh" "$HOME/install_desktop.sh"
+download "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_apps.sh" "$HOME/install_apps.sh"
+download "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/config_desktop.sh" "$HOME/config_desktop.sh"
 
 # 2. Install desktop environment
 $HOME/install_desktop.sh
