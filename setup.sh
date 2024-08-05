@@ -6,9 +6,9 @@ Comment out sections as needed.
 END
 
 # 1. Download shell scripts
-sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/install_desktop.sh" -O $HOME/install_desktop.sh
-sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/install_apps.sh" -O $HOME/install_apps.sh
-sudo wget "https://raw.githubusercontent.com/MechatronicsWhiz/SparkyOS/main/config_desktop.sh" -O $HOME/config_desktop.sh
+sudo wget "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_desktop.sh" -O $HOME/install_desktop.sh
+sudo wget "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/install_apps.sh" -O $HOME/install_apps.sh
+sudo wget "https://raw.githubusercontent.com/SparkyAutomation/SparkyOS/main/config_desktop.sh" -O $HOME/config_desktop.sh
 
 sudo chmod +x $HOME/install_desktop.sh
 sudo chmod +x $HOME/install_apps.sh
